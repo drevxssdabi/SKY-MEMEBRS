@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sky Members</title>
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #000;
+            color: #0f0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            padding-top: 20px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            text-align: center;
+            white-space: nowrap;
+            overflow: hidden;
+            border-right: .15em solid #0f0;
+            animation: typing 3s steps(30, end), blink-caret .75s step-end infinite;
+        }
+
+        /* Typing Effect */
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+        @keyframes blink-caret {
+            from, to { border-color: transparent; }
+            50% { border-color: #0f0; }
+        }
+
+        /* Sections */
+        .section {
+            width: 80%;
+            max-width: 800px;
+            text-align: center;
+            margin: 20px 0;
+            padding: 20px;
+            background: rgba(0, 128, 0, 0.1);
+            border: 1px solid #0f0;
+            border-radius: 10px;
+        }
+
+        .section h2 {
+            margin-bottom: 10px;
+            font-size: 1.8em;
+            color: #0f0;
+        }
+
+        /* Leaders Section */
+        .leaders {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .leader {
+            text-align: center;
+            width: 30%;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            padding: 15px;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .leader:hover, .leader:active {
+            transform: translateY(-10px);
+            box-shadow: 0 0 15px 5px #0f0;
+        }
+
+        .leader img {
+            width: 100%;
+            max-width: 150px;
+            height: auto;
+            border-radius: 50%;
+            border: 2px solid #0f0;
+            margin-bottom: 10px;
+            transition: border-color 0.3s ease;
+        }
+
+        .leader:hover img, .leader:active img {
+            border-color: #a0f;
+        }
+
+        .leader-tag {
+            font-weight: bold;
+            color: #0f0;
+        }
+
+        /* Call-to-Action Button */
+        .cta-button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 1.2em;
+            color: #000;
+            background-color: #0f0;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+        .cta-button:hover {
+            background-color: #0a0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Heading with Typing Effect -->
+    <h1>Sky Members</h1>
+
+    <!-- Mission Section -->
+    <div class="section">
+        <h2>Our Mission</h2>
+        <p>Sky Members is a guild driven by ambition and a vision of unparalleled influence. We aim to be the most civilized group in existence, skilled in the arts of hacking, strategy, and manipulation. We are united by a single goal: to go beyond the limits of expectation and impact the world in extraordinary ways. Each member embodies an anime-inspired persona, shaping our identity with diverse, unique characters. Don’t chase fantasy; let’s take over reality.</p>
+    </div>
+
+    <!-- About Us Section -->
+    <div class="section">
+        <h2>About Us</h2>
+        <p>We are a collective of determined individuals, each with a distinct character, bound by a common cause. Sky Members is more than a guild; it’s a movement. Our members bring diverse skills and a shared passion for growth, influence, and power. Guided by respect and strategy, we strive for excellence in all pursuits, making our presence known across the digital and real-world landscapes. Join us and redefine what’s possible.</p>
+    </div>
+
+    <!-- Top 3 Leaders Section -->
+    <div class="section">
+        <h2>Our Leaders</h2>
+        <div class="leaders">
+            <div class="leader">
+                <img src="toji.jpg" alt="Leader 1">
+                <p class="leader-tag">TOJI</p>
+                <p>Founder.</p>
+            </div>
+            <div class="leader">
+                <img src="douma.jpg" alt="Leader 2">
+                <p class="leader-tag">DOUMA</p>
+                <p>Helper.</p>
+            </div>
+            <div class="leader">
+                <img src="dabi.jpg" alt="Leader 3">
+                <p class="leader-tag"> DABI</p>
+                <p>Designer</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Call to Action Button -->
+    <a href="signup-form.html" class="cta-button">Join Us Now</a>
+</body>
+</html>

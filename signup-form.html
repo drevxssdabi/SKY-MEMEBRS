@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join Sky Members</title>
+    <style>
+        /* Basic reset and responsive adjustments */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #000;
+            color: #0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .form-container {
+            width: 100%;
+            max-width: 500px;
+            padding: 20px;
+            background: rgba(0, 128, 0, 0.1);
+            border: 1px solid #0f0;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 255, 0, 0.3);
+        }
+
+        h1 {
+            color: #0f0;
+            text-align: center;
+            font-size: 1.8em;
+            margin-bottom: 10px;
+        }
+
+        p {
+            text-align: center;
+            font-size: 1em;
+            margin-bottom: 20px;
+            color: #8f8;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #0f0;
+            font-size: 1em;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            font-size: 1em;
+            border: 1px solid #0f0;
+            border-radius: 5px;
+            background-color: #111;
+            color: #0f0;
+            outline: none;
+        }
+
+        textarea {
+            resize: vertical;
+        }
+
+        .submit-button {
+            width: 100%;
+            padding: 12px;
+            font-size: 1.1em;
+            font-weight: bold;
+            color: #000;
+            background-color: #0f0;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .submit-button:hover {
+            background-color: #0a0;
+        }
+
+        .success-message {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 1.1em;
+            color: #0f0;
+        }
+
+        .success-message a {
+            color: #0f0;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="form-container">
+        <h1>Join Sky Members</h1>
+        <p>Become part of the ultimate guild. Fill out the form below to apply!</p>
+
+        <form id="joinForm">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="gender">Gender</label>
+                <input type="text" id="gender" name="gender" required>
+            </div>
+            <div class="form-group">
+                <label for="whatsapp">WhatsApp Number (include country code)</label>
+                <input type="tel" id="whatsapp" name="whatsapp" required>
+            </div>
+            <div class="form-group">
+                <label for="reason">Why You Want to Join</label>
+                <textarea id="reason" name="reason" rows="3" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="skills">Skills</label>
+                <textarea id="skills" name="skills" rows="3" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="help">How You Can Help Our Guild</label>
+                <textarea id="help" name="help" rows="3" required></textarea>
+            </div>
+            <button type="submit" class="submit-button">Submit</button>
+        </form>
+
+        <div id="successMessage" class="success-message" style="display: none;">
+            Your application has been submitted! Join our <a href="https://t.me/+8LvbfAPaNvo2NGM8" target="_blank">Telegram channel</a> to stay updated.
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('joinForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Collect form data
+            const name = document.getElementById('name').value;
+            const gender = document.getElementById('gender').value;
+            const whatsapp = document.getElementById('whatsapp').value;
+            const reason = document.getElementById('reason').value;
+            const skills = document.getElementById('skills').value;
+            const help = document.getElementById('help').value;
+
+            // Telegram Bot Information
+            const botToken = '7664297120:AAHUlqNlZmnscLoSMgfdWzIDxi11SbxDOQk';
+            const chatId = '-4541389350'; // Your group chat ID
+
+            // Message to send
+            const message = `New Guild Application:\n\n` +
+                            `Name: ${name}\n` +
+                            `Gender: ${gender}\n` +
+                            `WhatsApp: ${whatsapp}\n` +
+                            `Reason to Join: ${reason}\n` +
+                            `Skills: ${skills}\n` +
+                            `How They Can Help: ${help}`;
+
+            // Send data to Telegram
+            fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    chat_id: chatId,
+                    text: message
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.ok) {
+                    document.getElementById('joinForm').style.display = 'none';
+                    document.getElementById('successMessage').style.display = 'block';
+                } else {
+                    alert('There was an error submitting your application. Please try again.');
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        });
+    </script>
+</body>
+</html>
